@@ -1,8 +1,8 @@
 {
   "name": "metismenu",
-  "version": "1.0.3",
+  "version": "1.1.3",
   "description": "Easy menu jQuery plugin for Twitter Bootstrap 3",
-  "main": "metisMenu.js",
+  "main": "./dist/metisMenu.js",
   "scripts": {
     "test": "grunt travis --verbose"
   },
@@ -22,7 +22,7 @@
     "metisMenu"
   ],
   "author": {
-    "name": "Osman Nuri Okumuş",
+    "name": "Osman Nuri Okumus",
     "email": "onokumus@gmail.com",
     "url": " http://onokumus.com/"
   },
@@ -33,8 +33,9 @@
   "homepage": "https://github.com/onokumus/metisMenu",
   "devDependencies": {
     "grunt": "^0.4.5",
-    "grunt-contrib-concat": "^0.4.0",
+    "grunt-contrib-concat": "^0.5.0",
+    "grunt-contrib-cssmin": "^0.10.0",
     "grunt-contrib-jshint": "^0.10.0",
-    "grunt-contrib-uglify": "^0.5.0"
+    "grunt-contrib-uglify": "^0.6.0"
   }
 }
