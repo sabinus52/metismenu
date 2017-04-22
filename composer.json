@@ -1,42 +1,28 @@
 {
-    "name" : "components/metismenu",
-    "description" : "A jQuery menu plugin",
-    "type" : "component",
-    "homepage" : "https://github.com/onokumus/metisMenu",
-    "license" : "MIT",
-    "authors": [{
-        "name": "Osman Nuri Okumus",
-        "email": "onokumus@gmail.com",
-        "homepage": "http://onokumus.com"
-    }],
-    "support" : {
-        "issues": "https://github.com/onokumus/metisMenu/issues"
-    },
-    "keywords" : [
-        "menu",
-        "plugin",
-        "jquery",
-        "web",
-        "css",
-        "js",
-        "bootstrap"
-    ],
-    "require" : {
-        "components/bootstrap" : ">=2.0, <4.0"
-    },
-    "suggest": {
-        "robloach/component-installer": "Allows installation of Components via Composer"
-    },
-    "extra" : {
-        "component" : {
-            "scripts" : [
-                "dist/metisMenu.js",
-                "dist/metisMenu.min.js"
-            ],
-            "styles" : [
-                "dist/metisMenu.css",
-                "dist/metisMenu.min.css"
-            ]
-        }
+  "name": "onokumus/metismenu",
+  "description": "A jQuery menu plugin",
+  "keywords": [
+    "menu",
+    "plugin",
+    "jquery",
+    "web",
+    "css",
+    "js",
+    "bootstrap"
+  ],
+  "homepage": "https://github.com/onokumus/metisMenu",
+  "authors": [
+    {
+      "name": "Osman Nuri Okumus",
+      "email": "onokumus@gmail.com",
+      "homepage": "http://onokumus.com"
     }
+  ],
+  "support": {
+    "issues": "https://github.com/onokumus/metisMenu/issues"
+  },
+  "license": "MIT",
+  "suggest": {
+    "components/jquery": ">=1.8"
+  }
 }
