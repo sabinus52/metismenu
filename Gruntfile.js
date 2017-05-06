@@ -13,25 +13,29 @@ module.exports = function(grunt) {
       ' * Under <%= pkg.license %> License\n' +
       ' */\n',
 
-    jshint: {
-      options: {
-        jshintrc: '.jshintrc'
-      },
-      all: [
-        'Gruntfile.js',
-        'src/metisMenu.js'
-      ]
+    eslint: {
+      target: ['src/*.js']
     },
-    concat: {
+    babel: {
+      options: {
+        presets: ['es2015'],
+        plugins: ['transform-es2015-modules-umd']
+      },
       dist: {
-        src: ['src/metisMenu.js'],
-        dest: 'dist/metisMenu.js'
+        files: {
+          'dist/metisMenu.js': 'src/metisMenu.js'
+        }
       }
     },
     uglify: {
       plugin: {
-        src: ['dist/metisMenu.js'],
-        dest: 'dist/metisMenu.min.js'
+        options: {
+            sourceMap: true,
+            sourceMapName: 'dist/metisMenu.js.map'
+        },
+        files: {
+          'dist/metisMenu.min.js': ['dist/metisMenu.js']
+        }
       }
     },
     postcss: {
@@ -110,7 +114,7 @@ module.exports = function(grunt) {
     watch: {
       script: {
         files: ['src/**/*.js'],
-        tasks: ['concat', 'uglify', 'usebanner']
+        tasks: ['babel', 'uglify', 'usebanner']
       },
       style: {
         files: ['src/**/*.css'],
@@ -129,19 +133,19 @@ module.exports = function(grunt) {
     }
   });
 
-  grunt.loadNpmTasks('grunt-contrib-jshint');
-  grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-banner');
   grunt.loadNpmTasks('grunt-postcss');
+  grunt.loadNpmTasks('grunt-babel');
+  grunt.loadNpmTasks('grunt-eslint');
 
-  grunt.registerTask('travis', ['jshint']);
+  grunt.registerTask('travis', ['eslint']);
   grunt.registerTask('serve', ['connect:livereload', 'watch']);
   grunt.registerTask('default', [
-    'jshint',
-    'concat',
+    'eslint',
+    'babel',
     'uglify',
     'postcss',
     'usebanner'
