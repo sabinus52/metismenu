@@ -1,33 +1,29 @@
-# metismenu
-[![NPM version](https://img.shields.io/npm/v/metismenu.svg?style=flat)](https://www.npmjs.com/package/metismenu)
-[![NPM monthly downloads](https://img.shields.io/npm/dm/metismenu.svg?style=flat)](https://npmjs.org/package/metismenu)
-[![NPM total downloads](https://img.shields.io/npm/dt/metismenu.svg?style=flat)](https://npmjs.org/package/metismenu)
-[![Linux Build Status](https://img.shields.io/travis/onokumus/metismenu.svg?style=flat&label=Travis)](https://travis-ci.org/onokumus/metismenu)
-[![Packagist](https://img.shields.io/packagist/v/onokumus/metismenu.svg)](https://packagist.org/packages/onokumus/metismenu)
+# metismenu [![NPM version](https://img.shields.io/npm/v/metismenu.svg?style=flat)](https://www.npmjs.com/package/metismenu) [![NPM monthly downloads](https://img.shields.io/npm/dm/metismenu.svg?style=flat)](https://npmjs.org/package/metismenu)  [![NPM total downloads](https://img.shields.io/npm/dt/metismenu.svg?style=flat)](https://npmjs.org/package/metismenu)  [![](https://data.jsdelivr.com/v1/package/npm/metismenu/badge)](https://www.jsdelivr.com/package/npm/metismenu) [![Packagist](https://img.shields.io/packagist/v/onokumus/metismenu.svg)](https://packagist.org/packages/onokumus/metismenu)
 
 > A jQuery menu plugin
 
+## metismenu without jQuery
+If you want to try MetisMenu without jQuery, see [v3](https://github.com/onokumus/metismenu/tree/v3) branch.
+
 ## Table of Contents
+
 - [Getting started](#getting-started)
   * [Install](#install)
   * [Download](#download)
-  * [React](#react)
-  * [TypeScript type definitions](#typescript-type-definitions)
 - [Usage](#usage)
   * [Stopping list opening on certain elements](#stopping-list-opening-on-certain-elements)
 - [Options](#options)
     + [toggle](#toggle)
     + [dispose](#dispose)
-    + [activeClass](#activeclass)
-    + [collapseClass](#collapseclass)
-    + [collapseInClass](#collapseinclass)
-    + [collapsingClass](#collapsingclass)
+    + [activeClass `deprecated`](#activeclass-deprecated)
+    + [collapseClass `deprecated`](#collapseclass-deprecated)
+    + [collapseInClass `deprecated`](#collapseinclass-deprecated)
+    + [collapsingClass `deprecated`](#collapsingclass-deprecated)
     + [preventDefault](#preventdefault)
     + [triggerElement](#triggerelement)
     + [parentTrigger](#parenttrigger)
     + [subMenu](#submenu)
 - [Events](#events)
-- [Testing](#testing)
 - [Demo](#demo)
 - [About](#about)
   * [Related projects](#related-projects)
@@ -47,10 +43,10 @@ Install with [npm](https://www.npmjs.com/):
 $ npm install --save metismenu
 ```
 
-Install with [bower](https://bower.io/)
+Install with [yarn](https://yarnpkg.com):
 
 ```sh
-$ bower install metismenu --save
+$ yarn add metismenu
 ```
 
 Install with [composer](https://getcomposer.org/)
@@ -62,47 +58,30 @@ $ composer require onokumus/metismenu:dev-master
 ### Download
 [download](https://github.com/onokumus/metisMenu/archive/master.zip)
 
-### React
-See [react-metismenu](https://github.com/alpertuna/react-metismenu)
-
-### TypeScript type definitions
-
-Install metismenu TypeScript definition file
-```bash
-$ npm install --save-dev @types/metismenu
-```
-
 ## Usage
 
 1. Include metismenu StyleSheet
 
   ```html
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/metisMenu/2.7.0/metisMenu.min.css">
-  ```
-      OR
-
-  ```html
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/jquery.metismenu/2.7.0/metisMenu.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/metisMenu/2.7.9/metisMenu.min.css">
+  <!-- OR -->  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/metismenu/dist/metisMenu.min.css">
   ```
 
 2. Include jQuery
 
   ```html
   <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-  ```
-      OR
-  ```html
-  <script src="//cdn.jsdelivr.net/jquery/2.2.4/jquery.min.js"></script>
+  <!-- OR -->
+  <script src="https://cdn.jsdelivr.net/npm/jquery"></script>
   ```
 
 3. Include metisMenu plugin's code
 
   ```html
-  <script src="//cdnjs.cloudflare.com/ajax/libs/metisMenu/2.7.0/metisMenu.min.js"></script>
-  ```
-      OR
-  ```html
-  <script src="//cdn.jsdelivr.net/jquery.metismenu/2.7.0/metisMenu.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/metisMenu/2.7.9/metisMenu.min.js"></script>
+  <!-- OR -->
+  <script src="https://cdn.jsdelivr.net/npm/metismenu"></script>
   ```
 
 4. Add class `metismenu` to unordered list
@@ -114,19 +93,19 @@ $ npm install --save-dev @types/metismenu
   ```
 5. Make expand/collapse controls accessible
 
-  > Be sure to add `aria-expanded` to the element `a` and the following `ul`. This attribute explicitly defines the current state of the collapsible element to screen readers and similar assistive technologies. If the collapsible element is closed by default, it should have a value of `aria-expanded="false"`. If you've set the collapsible element's parent `li` element to be open by default using the `active` class, set `aria-expanded="true"` on the control instead. The plugin will automatically toggle this attribute based on whether or not the collapsible element has been opened or closed.
+  > Be sure to add `aria-expanded` to the element `a`. This attribute explicitly defines the current state of the collapsible element to screen readers and similar assistive technologies. If the collapsible element is closed by default, it should have a value of `aria-expanded="false"`. If you've set the collapsible element's parent `li` element to be open by default using the `active` class, set `aria-expanded="true"` on the control instead. The plugin will automatically toggle this attribute based on whether or not the collapsible element has been opened or closed.
 
   ```html
   <ul class="metismenu" id="menu">
     <li class="active">
       <a href="#" aria-expanded="true">Menu 1</a>
-      <ul aria-expanded="true">
+      <ul>
       ...
       </ul>
     </li>
     <li>
       <a href="#" aria-expanded="false">Menu 2</a>
-      <ul aria-expanded="false">
+      <ul>
       ...
       </ul>
     </li>
@@ -141,13 +120,13 @@ $ npm install --save-dev @types/metismenu
   <ul class="metismenu" id="menu">
   <li class="active">
     <a class="has-arrow" href="#" aria-expanded="true">Menu 1</a>
-    <ul aria-expanded="true">
+    <ul>
     ...
     </ul>
   </li>
   <li>
     <a class="has-arrow" href="#" aria-expanded="false">Menu 2</a>
-    <ul aria-expanded="false">
+    <ul>
     ...
     </ul>
   </li>
@@ -192,7 +171,9 @@ For stop and destroy metisMenu.
  $("#menu").metisMenu('dispose');
 ```
 
-#### activeClass
+#### activeClass `deprecated`
+> This option will be remove from next version.
+
 Type: `String`
 Default: `active`
 
@@ -202,7 +183,9 @@ Default: `active`
  });
 ```
 
-#### collapseClass
+#### collapseClass `deprecated`
+> This option will be remove from next version.
+
 Type: `String`
 Default: `collapse`
 
@@ -212,7 +195,9 @@ Default: `collapse`
  });
 ```
 
-#### collapseInClass
+#### collapseInClass `deprecated`
+> This option will be remove from next version.
+
 Type: `String`
 Default: `in`
 
@@ -222,7 +207,9 @@ Default: `in`
  });
 ```
 
-#### collapsingClass
+#### collapsingClass `deprecated`
+> This option will be remove from next version.
+
 Type: `String`
 Default: `collapsing`
 
@@ -285,12 +272,6 @@ Default: `ul`
 |hide.metisMenu    |This event is fired immediately when the `_hide` method has been called. |
 |hidden.metisMenu  |This event is fired when a collapse `ul` element has been hidden from the user (will wait for CSS transitions to complete).|
 
-## Testing
-```sh
-$ npm install
-$ grunt serve
-```
-
 ## Demo
 [http://mm.onokumus.com](http://mm.onokumus.com)
 
@@ -300,23 +281,27 @@ Contains a simple HTML file to demonstrate metisMenu plugin.
 
 ### Related projects
 - [chl](https://www.npmjs.com/package/chl): flexbox admin layout | [homepage](https://github.com/chaldene/chl#readme "flexbox admin layout")
-- [elektron](https://www.npmjs.com/package/elektron): An Admin Toolkit | [homepage](https://github.com/onokumus/elektron#readme "An Admin Toolkit")
-- [onoffcanvas](https://www.npmjs.com/package/onoffcanvas): A jQuery offcanvas plugin | [homepage](https://github.com/onokumus/onoffcanvas#readme "A jQuery offcanvas plugin")
+- [elektron](https://www.npmjs.com/package/elektron): An Admin Layout | [homepage](https://github.com/onokumus/elektron#readme "An Admin Layout")
+- [onoffcanvas](https://www.npmjs.com/package/onoffcanvas): An offcanvas plugin | [homepage](https://github.com/onokumus/onoffcanvas#readme "An offcanvas plugin")
 - [twbuttons](https://www.npmjs.com/package/twbuttons): alexwolfe/Buttons for Twitter Bootstrap 3 | [homepage](https://github.com/onokumus/twbuttons "alexwolfe/Buttons for Twitter Bootstrap 3")
 
 ### Contributors
 | **Commits** | **Contributor** |  
 | --- | --- |  
-| 113 | [onokumus](https://github.com/onokumus) |  
+| 170 | [onokumus](https://github.com/onokumus) |  
 | 8   | [diegozhu](https://github.com/diegozhu) |  
 | 4   | [sinabs](https://github.com/sinabs) |  
+| 3   | [BurkovBA](https://github.com/BurkovBA) |  
 | 2   | [arthurtalkgoal](https://github.com/arthurtalkgoal) |  
+| 2   | [mrdziuban](https://github.com/mrdziuban) |  
 | 2   | [PeterDaveHello](https://github.com/PeterDaveHello) |  
 | 2   | [kalidema](https://github.com/kalidema) |  
 | 2   | [AndrewEastwood](https://github.com/AndrewEastwood) |  
 | 2   | [rgnevashev](https://github.com/rgnevashev) |  
+| 1   | [719media](https://github.com/719media) |  
 | 1   | [chriswiggins](https://github.com/chriswiggins) |  
 | 1   | [jmagnusson](https://github.com/jmagnusson) |  
+| 1   | [LukasDrgon](https://github.com/LukasDrgon) |  
 | 1   | [Cediddi](https://github.com/Cediddi) |  
 | 1   | [capynet](https://github.com/capynet) |  
 
@@ -328,6 +313,12 @@ Please read the [contributing guide](.github/contributing.md) for advice on open
 ### Release History
 |**DATE**      |**VERSION**   |**CHANGES**|
 |--------------|--------------|-----------|
+|2018-06-28    |v2.7.9        |Make jquery a peer dependency|
+|2018-06-14    |v2.7.8        |remove aria-expanded attribute & remove transitionend check|
+|2018-02-14    |v2.7.4        |jQuery -> $ in src/metisMenu.js to fix import. [#158](https://github.com/onokumus/metismenu/pull/158)|
+|2018-02-14    |v2.7.3        |window might not be defined in node.js environment [#156](https://github.com/onokumus/metismenu/pull/156)|
+|2017-12-31    |v2.7.2        |isolate against bootstrap changes, remove old legacy ie9 code [#154](https://github.com/onokumus/metismenu/pull/154)|
+|2017-10-30    |v2.7.1        |added check in complete()-callback to break when menu was disposed [#150](https://github.com/onokumus/metismenu/pull/150)|
 |2017-03-08    |v2.7.0        |fixed `has-arrow` class border color & added new 3 options|
 |2017-02-23    |v2.6.3        |fixed #129|
 |2017-02-02    |v2.6.2        |doubleTapToGo option is deprecated|
@@ -361,16 +352,15 @@ Please read the [contributing guide](.github/contributing.md) for advice on open
 + [twitter/onokumus](https://twitter.com/onokumus)
 
 ### License
-Copyright © 2017, [Osman Nuri Okumus](https://github.com/onokumus).
+Copyright © 2018, [Osman Nuri Okumus](https://github.com/onokumus).
 Released under the [MIT License](LICENSE).
 
 ***
 
-_This file was generated by [verb-generate-readme](https://github.com/verbose/verb-generate-readme), v0.4.2, on March 08, 2017._
+_This file was generated by [verb-generate-readme](https://github.com/verbose/verb-generate-readme), v0.7.0, on June 28, 2018._
 
 [chl]: https://github.com/chaldene/chl
 [elektron]: https://github.com/onokumus/elektron
-[helper-changelog]: https://github.com/helpers/helper-changelog
 [onoffcanvas]: https://github.com/onokumus/onoffcanvas
 [twbuttons]: https://github.com/onokumus/twbuttons
 
